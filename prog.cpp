@@ -1,7 +1,6 @@
 ﻿using namespace std;
 
 #pragma once
-
 #include <Windows.h>
 #include <iostream>
 #include <cstring>
@@ -13,64 +12,43 @@ int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    string colour_of_text;
-    string colour_of_background;
-    cout << "Введите желаемый цвет текста (красный, синий или зелёный): ";
-    cin >> colour_of_text;
-    cout << "Введите желаемый цвет фона (красный, синий или зелёный): ";
-    cin >> colour_of_background;
+    int width;
+    int visota;
+    string symbol;
+    string colour;
+    cout << "Введите ширину: ";
+    cin >> visota;
+    cout << "Введите высоу: ";
+    cin >> width;
+    cout << "Введите символ: ";
+    cin >> symbol;
+    cout << "введите желаемый цвет(красный, синий или зелёный): ";
+    cin >> colour;
 
-    if (colour_of_text == "красный") {
-        cout << "\033[31m";
-        if (colour_of_background == "красный") {
-            cout << "Вывод отменён из-за сливающихся цветов!";
-            return 1;
-        }
+    for (int i = 0; i < width; i++) {
+        for (int j = 0; j < visota; j++) {
+            if ((j >= 1 && j < visota-1) && (i != 0 && i != width - 1)) {
+                
+                cout << " ";
+            }
+            else {
+                if (colour == "красный") {
+                    cout << "\033[31m" << symbol;
+                }
 
-        else if (colour_of_background == "синий") {
-            cout << "\033[44m";
-        }
+                else if (colour == "синий") {
+                    cout << "\033[34m" << symbol;
+                }
 
-        else if (colour_of_background == "зелёный") {
-            cout << "\033[42m";
+                else if (colour == "зелёный") {
+                    cout << "\033[32m" << symbol;
+                }
+            }
         }
-        cout << "Ceci est un texte de test de la console !";
+        cout << "\033[0m" << endl;
     }
 
-    else if (colour_of_text == "синий") {
-        cout << "\033[34m";
-        if (colour_of_background == "красный") {
-            cout << "\033[41m";
-        }
-
-        else if (colour_of_background == "синий") {
-            cout << "Вывод отменён из-за сливающихся цветов!";
-            return 1;
-        }
-
-        else if (colour_of_background == "зелёный") {
-            cout << "\033[42m";
-        }
-        cout << "Ceci est un texte de test de la console !";
-    }
-
-    else if (colour_of_text == "зелёный") {
-        cout << "\033[32m";
-        if (colour_of_background == "красный") {
-            cout << "\033[41mCeci est un texte de test de la console !";
-        }
-
-        else if (colour_of_background == "синий") {
-            cout << "\033[44mCeci est un texte de test de la console !";
-        }
-
-        else if (colour_of_background == "зелёный") {
-            cout << "Вывод отменён из-за сливающихся цветов!";
-            return 1;
-        }
-        cout << "Ceci est un texte de test de la console !";
-    }
-
+ 
     return 0;
 }
 
