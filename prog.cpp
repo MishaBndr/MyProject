@@ -13,6 +13,22 @@ int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
+    int a;
+    cin >> a;
+    if ((a % 4 == 0 && a % 100 != 0) || a % 400 == 0) {
+        cout << "Год высокостный.";
+    }
+
+    else {
+        cout << "Год не высокостный!";
+    }
+
+
+
+
+
+
+
     return 0;
 }
 
