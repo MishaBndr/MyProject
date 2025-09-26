@@ -12,43 +12,32 @@ int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 
-    int width;
-    int visota;
-    string symbol;
-    string colour;
-    cout << "Введите ширину: ";
-    cin >> visota;
-    cout << "Введите высоу: ";
-    cin >> width;
-    cout << "Введите символ: ";
-    cin >> symbol;
-    cout << "введите желаемый цвет(красный, синий или зелёный): ";
-    cin >> colour;
+    int size;
+    cin >> size;
 
-    for (int i = 0; i < width; i++) {
-        for (int j = 0; j < visota; j++) {
-            if ((j >= 1 && j < visota-1) && (i != 0 && i != width - 1)) {
-                
-                cout << " ";
-            }
-            else {
-                if (colour == "красный") {
-                    cout << "\033[31m" << symbol;
-                }
+    int* ptr = new int[size];
 
-                else if (colour == "синий") {
-                    cout << "\033[34m" << symbol;
-                }
-
-                else if (colour == "зелёный") {
-                    cout << "\033[32m" << symbol;
-                }
-            }
-        }
-        cout << "\033[0m" << endl;
+    for (int i = 0; i < size; i++) {
+        ptr[i] = rand() % 51;
     }
 
- 
+    int max = 0;
+
+    for (int i = 0; i < size; i++) {
+        if (ptr[i] + 1 > ptr[i]) {
+            max = ptr[i] + 1;
+        }
+    }
+
+    cout << "Max element: " << max;
+    int min = 0;
+    for (int i = 0; i < size; i++) {
+        if (ptr[i] + 1 < ptr[i]) {
+            max = ptr[i] + 1;
+        }
+    }
+
+    cout << "Min element: " << min;
     return 0;
 }
 
